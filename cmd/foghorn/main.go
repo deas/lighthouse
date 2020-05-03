@@ -17,6 +17,7 @@ import (
 	"github.com/jenkins-x/lighthouse/pkg/logrusutil"
 	"github.com/sirupsen/logrus"
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/klog"
 )
 
 type options struct {
@@ -31,6 +32,7 @@ func (o *options) Validate() error {
 
 func gatherOptions(fs *flag.FlagSet, args ...string) options {
 	var o options
+	klog.InitFlags(fs)
 	fs.BoolVar(&o.dryRun, "dry-run", true, "Whether to mutate any real-world state.")
 	fs.StringVar(&o.namespace, "namespace", "", "The namespace to listen in")
 

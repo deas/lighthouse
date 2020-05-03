@@ -18,6 +18,7 @@ require (
 	github.com/shurcooL/githubv4 v0.0.0-20190718010115-4ba037080260
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/cobra v0.0.5
+	github.com/spf13/pflag v1.0.3
 	github.com/stretchr/testify v1.4.0
 	github.com/tektoncd/pipeline v0.8.0
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
@@ -28,6 +29,7 @@ require (
 	k8s.io/api v0.0.0-20190816222004-e3a6b8045b0b
 	k8s.io/apimachinery v0.0.0-20190816221834-a9f1d8a9c101
 	k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible
+	k8s.io/klog v0.2.0
 	k8s.io/metrics v0.0.0-20190704050707-780c337c9cbd // indirect
 	knative.dev/pkg v0.0.0-20191217184203-cf220a867b3d
 	sigs.k8s.io/yaml v1.1.0
