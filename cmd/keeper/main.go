@@ -32,7 +32,6 @@ import (
 	"github.com/jenkins-x/lighthouse/pkg/metrics"
 	"github.com/jenkins-x/lighthouse/pkg/util"
 	"github.com/sirupsen/logrus"
-	"k8s.io/klog"
 )
 
 type options struct {
@@ -72,7 +71,7 @@ func (o *options) Validate() error {
 
 func gatherOptions(fs *flag.FlagSet, args ...string) options {
 	var o options
-	klog.InitFlags(fs)
+	// klog.InitFlags(fs)
 	fs.IntVar(&o.port, "port", 8888, "Port to listen on.")
 	fs.StringVar(&o.configPath, "config-path", "", "Path to config.yaml.")
 	fs.StringVar(&o.jobConfigPath, "job-config-path", "", "Path to prow job configs.")
@@ -102,8 +101,8 @@ func main() {
 	defer interrupts.WaitForGracefulShutdown()
 
 	jobutil.ServePProf()
-
-	o := gatherOptions(flag.NewFlagSet(os.Args[0], flag.ExitOnError), os.Args[1:]...)
+	o := gatherOptions(flag.CommandLine, os.Args[1:]...)
+	// o := gatherOptions(flag.NewFlagSet(os.Args[0], flag.ExitOnError), os.Args[1:]...)
 	if err := o.Validate(); err != nil {
 		logrus.WithError(err).Fatal("Invalid options")
 	}
