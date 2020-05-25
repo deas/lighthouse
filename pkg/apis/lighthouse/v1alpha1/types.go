@@ -167,6 +167,21 @@ func (s *LighthouseJobSpec) GetEnvVars() map[string]string {
 		env["DOCKER_REGISTRY"] = registry
 	}
 
+	httpProxy := os.Getenv("HTTP_PROXY")
+	if httpProxy != "" {
+		env["HTTP_PROXY"] = httpProxy
+	}
+
+	httpsProxy := os.Getenv("HTTPS_PROXY")
+	if httpsProxy != "" {
+		env["HTTPS_PROXY"] = httpsProxy
+	}
+
+	noProxy := os.Getenv("NO_PROXY")
+	if noProxy != "" {
+		env["NO_PROXY"] = noProxy
+	}
+
 	env[JobSpecEnv] = fmt.Sprintf("type:%s", s.Type)
 
 	if s.Type == PeriodicJob {
